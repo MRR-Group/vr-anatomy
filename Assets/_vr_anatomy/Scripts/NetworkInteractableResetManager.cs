@@ -16,18 +16,10 @@ namespace XRMultiplayer
         {
             objects ??=  new List<NetworkRigidbody>();
             transforms ??= new Dictionary<NetworkRigidbody, (Vector3, Vector3, Quaternion)>();
-        }
-
-        public override void OnNetworkSpawn()
-        {
-            if (!IsServer)
-            {
-                return;
-            }
             
-            transforms.Clear();
             SaveTransforms();
         }
+
 
         private void SaveTransforms()
         {
@@ -47,12 +39,7 @@ namespace XRMultiplayer
         {
             foreach (var obj in objects)
             {
-                if (obj == null || !transforms.TryGetValue(obj, out var data))
-                {
-                    continue;
-                }
-                
-                var (pos, scale, rotation) = data;
+                var (pos, scale, rotation) = transforms[obj];
                 
                 obj.GetComponent<Collider>().enabled = false;
                 
