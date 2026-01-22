@@ -10,6 +10,7 @@ namespace XRMultiplayer
         [SerializeField]
         private List<NetworkRigidbody> objects;
 
+        // TODO IT SHOULD BE SAVE IN NETWORK VARIABLE
         private Dictionary<NetworkRigidbody, (Vector3, Vector3, Quaternion)> transforms;
         
         private void Start()
