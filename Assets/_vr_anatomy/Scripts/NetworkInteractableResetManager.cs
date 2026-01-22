@@ -33,7 +33,7 @@ namespace XRMultiplayer
             ResetTransformRpc();
         }
 
-        [Rpc(SendTo.Server)]
+        [Rpc(SendTo.Everyone)]
         protected void ResetTransformRpc()
         {
             foreach (var obj in objects)
